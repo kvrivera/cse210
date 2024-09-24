@@ -22,7 +22,8 @@ class Program
     static int GetGrade()
     {
         Console.Write("What is your grade (number only)? ");
-        int grade = Console.Read();
+        string gradeText = Console.ReadLine();
+        int grade = int.Parse(gradeText);
 
         return grade;
     }
@@ -61,7 +62,9 @@ class Program
         }
         else
         {
+            string letterGrade = "error";
             Console.WriteLine("You have entered in a value that's not on our grade scale!");
+            return letterGrade;
         }
     }
 }
