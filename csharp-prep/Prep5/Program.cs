@@ -31,7 +31,7 @@ class Program
         Console.Write("What is your name? ");
         string userName = Console.ReadLine();
 
-        return userName
+        return userName;
     }
 
     static int PromptUserNumber()
@@ -51,7 +51,7 @@ class Program
         // use ** in C# 
         int favNumberSquared = favNumber * favNumber;
 
-        return favNumberSquared
+        return favNumberSquared;
     }
 
     static void DisplayTheResult(string name, int numberSquared)
