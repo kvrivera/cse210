@@ -1,3 +1,8 @@
+using System;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.IO;
+
 public class Journal
 /*
 What this class does:
@@ -22,21 +27,47 @@ Variables:
     // entries in the above code
     public void AddEntry(Entry newEntry)
     {
-        // syntax to add the entry to the _entries list
+        _entries.Add(newEntry);
     }
 
     public void DisplayAll()
     {
-        // syntax to display all entries
+        // use a foreach loop to display all journal entries
+        foreach (Entry entry in _entries)
+        {
+            Console.WriteLine(entry);
+        }
     }
 
-
-    public void SaveToFile(string file) // should this be void or something else?
+    public void SaveToFile(string file)
     {
-        // syntax to save the user string to file
+        // explain to user what's going on
+        Console.WriteLine("Saving your journal file...");
+
+        // convert the file name that the user gave us to a string variable
+        string fileName = file;
+
+        using (StreamWriter outputFile = new StreamWriter(fileName))
+        {
+            // ask the computer to read all of the lines of the file
+            string[] lines = System.IO.File.ReadAllLines(fileName);
+
+            foreach (string line in lines)
+            {
+                // select a separator character
+                // . makes sense here because it could be split by sentences,
+                // which makes the most sense to me right now
+                string[] parts = line.Split(".");
+            }
+        }
+
+
+
+
+
     }
 
-    public void LoadFromFile(string file) // should this be void?
+    public void LoadFromFile(string file)
     {
         // syntax to load entry from file
     }

@@ -15,7 +15,7 @@ _prompts : List<string>
 */
 {
     // This is the initial list of prompts
-    List<string> prompts = new List<string> {
+    List<string> _prompts = new List<string> {
         "What am I grateful for today?",
         "Describe your childhood.",
         "What is your biggest regret?",
@@ -29,6 +29,12 @@ _prompts : List<string>
         // an instance of the random class must be created
         Random random = new Random();
 
-        return "";
+        // use the Next method to get a random index
+        // use the Count method to get the count of how many items are in the list
+        // this helps the Next method function properly
+        int index = random.Next(_prompts.Count); // get the random index
+        string randomPrompt = _prompts[index]; // get the prompt at the random index
+
+        return randomPrompt;
     }
 }

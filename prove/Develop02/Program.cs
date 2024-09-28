@@ -72,6 +72,9 @@ Reason this is so useful/problem this solves:
     Voila.
 */
 using System;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 /* 
@@ -96,41 +99,79 @@ Program ends when user selects Quit command
         Console.WriteLine("MyJournal Menu \n1. Write \n2. Display \n3. Save \n4. Load \n5. Quit \nWhat would you like to do? ");
 
         //Get input from user
-        string menuChoice = Console.ReadLine();
+        string menuChoiceString = Console.ReadLine();
+        // convert string to integer
+        int menuChoice = int.Parse(menuChoiceString);
+
+        // use a do while loop to ensure the menu continues
+        // to show up and run for the user as long as they
+        // have not input 5 (ie: quit)
+        while (menuChoice != 5)
+        {
+            // use if else statements to run through the program
+            // based off of the user's menu choice input
+            if (menuChoice == 1) // user selected WRITE
+            {
+                // initiate a new Journal
+                Journal journal = new Journal();
+
+                // initiate a new Entry
+                Entry entry = new Entry();
+
+                // get the current date and time
+                DateTime theCurrentTime = DateTime.Now;
+                entry._date = theCurrentTime.ToShortDateString();
+
+                // get user their prompt
+                PromptGenerator prompt = new PromptGenerator(); // create new instance of promptgenerator
+                entry._promptText = prompt.GetRandomPrompt(); // generate random prompt, assign it to a new variable
+                Console.WriteLine(entry._promptText); // display the prompt to the user
+
+                // get entry text from user
+                entry._entryText = Console.ReadLine();
+
+                // add entry to journal's _entries list
+                journal.AddEntry(entry);
+
+                /*
+                // use a foreach loop to display all entries
+                foreach (Entry e in journal._entries)
+                {
+                    e.Display(); // display the whole entry
+                }
+                */
+            }
+
+            else if (menuChoice == 2) // user selected DISPLAY
+            {
+                // find out what file the user wants to display entries from
+                // open the file
+                // use a foreach loop to display all entries
 
 
-    }
+                foreach (Entry e in )
+            }
 
-    static void WriteEntry()
-    {
-        // list of prompts to give the user
-        /*
-        List<string> prompts = new List<string>();
+            else if (menuChoice == 3) // user selected SAVE
+            {
+                // get the file name that the user wants to give their file
+                Console.Write("What name will you give your file? ");
+                string file = Console.ReadLine();
 
-        // randomized prompts to show each time 
-        Console.WriteLine($"");
-        // grab the text entry from the user
-        Console.ReadLine();
-        */
-    }
+                // save the entry to the file
 
-    static void DisplayEntries()
-    {
+            }
 
-    }
+            else if (menuChoice == 4) // user selected LOAD
+            {
+                //
+            }
+        }
 
-    static void SaveEntries()
-    {
-
-    }
-
-    static void LoadEntries()
-    {
-
-    }
-
-    static void QuitProgram()
-    {
-
+        // if statement for when the user inputs 5 (ie: quit)
+        if (menuChoice == 5)
+        {
+            Console.WriteLine("See you next time."); // now the program closes
+        }
     }
 }
