@@ -8,15 +8,18 @@ _endYear: int
 _yearlySalary: int
 
 */
+using System.Runtime.CompilerServices;
+
 public class Job
 {
-    public string _companyName = "";
-    public string _jobTitle = "";
-    public int _startYear = 0;
-    public int _endYear = 0;
+    public string _companyName;
+    public string _jobTitle;
+    public int _startYear;
+    public int _endYear;
 
-    public string DisplayJobDetails(string _jobTitle, string _companyName, int _startYear, int _endYear)
+    // create a method to display job details
+    public void DisplayJobDetails() // needs no parameters, no returns
     {
-        return Job.DisplayJobDetails($"{_jobTitle} ({_companyName}) {_startYear}-{_endYear}");
+        Console.WriteLine($"{_jobTitle} ({_companyName}) {_startYear}-{_endYear}");
     }
 }
