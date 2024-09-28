@@ -87,7 +87,13 @@ class Program
         //determine the number of items in the list
         int numberCount = numbers.Count;
         // now find the average by dividing the sum by the number of items in the list
-        int average = listSum / numberCount;
+        // we need to first make this data input type a float
+        // otherwise the computer will do int division which will not return the decimal
+        // that it should return to accurately given the average of the list's numbers
+
+        // you make one of the numbers in the division equation a float as well
+        // to tell the computer that we need the decimal that it should return
+        float average = ((float)listSum) / numberCount;
         // now tell the user
         Console.WriteLine($"The average of the given numbers if {average}");
 
