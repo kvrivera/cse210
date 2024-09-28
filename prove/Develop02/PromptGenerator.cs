@@ -14,8 +14,21 @@ GetRandomPrompt() : string
 _prompts : List<string>
 */
 {
+    // This is the initial list of prompts
+    List<string> prompts = new List<string> {
+        "What am I grateful for today?",
+        "Describe your childhood.",
+        "What is your biggest regret?",
+        "What are you most grateful for today?",
+        "How do you prioritize your goals?",
+        "What is your favourite book?",
+        "Do you have any siblings? Are you close to them?"
+    };
     public string GetRandomPrompt()
     {
+        // an instance of the random class must be created
+        Random random = new Random();
+
         return "";
     }
 }

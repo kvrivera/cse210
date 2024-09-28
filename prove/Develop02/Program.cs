@@ -57,6 +57,20 @@ or format such as JSON for storage.
 Report on what you have done to exceed requirements by adding a 
 description of it in a comment in the Program.cs file.
 */
+
+/* 
+ABOVE AND BEYOND:
+Create an additional menu option called "Create Prompt"
+Allow user to input a prompt
+Add the prompt to the prompt list in PromptGenerator
+Reason this is so useful/problem this solves:
+    Users often have things they want to eventually write about,
+    and this allows them to create a 'to-do' list of things to
+    write about, in order to not forget special moments they may
+    not be able to write about in the moment. This is a particular
+    'problem' I want to find a resolution for in my own life. 
+    Voila.
+*/
 using System;
 
 class Program
@@ -92,13 +106,6 @@ Program ends when user selects Quit command
         // list of prompts to give the user
         /*
         List<string> prompts = new List<string>();
-
-        "What am I grateful for today?"
-        "Describe your childhood."
-        "What is your biggest regret?"
-        "What are you most grateful for today?"
-        "How do you prioritize your goals?"
-        "What is your favourite book?"
 
         // randomized prompts to show each time 
         Console.WriteLine($"");
