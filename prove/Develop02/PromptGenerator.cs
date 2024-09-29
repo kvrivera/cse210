@@ -1,3 +1,9 @@
+using System.IO;
+using System.Collections.Generic;
+using System.IO.Enumeration;
+using System.ComponentModel;
+using System;
+
 public class PromptGenerator
 /*
 Supplies random prompts whenever needed 
@@ -36,5 +42,26 @@ _prompts : List<string>
         string randomPrompt = _prompts[index]; // get the prompt at the random index
 
         return randomPrompt;
+    }
+
+    /* ABOVE AND BEYOND 
+    This method will allow the user to add their own prompts to the randomized list found in 
+    the PromptGenerator class
+    */
+    public void AddToPrompts(string personalizedPrompt)
+    {
+        _prompts.Add(personalizedPrompt);
+        Console.WriteLine($"Successfully added {personalizedPrompt}");
+        Console.WriteLine(); // blank line to keep tidy
+    }
+
+    public void DisplayAllPrompts()
+    {
+        Console.WriteLine("All prompts:");
+        foreach (var p in _prompts)
+        {
+            Console.WriteLine(p);
+        }
+        Console.WriteLine(); // blank line for tidy appearance
     }
 }

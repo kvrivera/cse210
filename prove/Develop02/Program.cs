@@ -93,9 +93,10 @@ Program ends when user selects Quit command 5
         2. Display
         3. Save
         4. Load
-        5. Quit
+        5. Add your own personalized prompt
+        6. Quit
         */
-        Console.WriteLine("MyJournal Menu \n1. Write \n2. Display \n3. Save \n4. Load \n5. Quit \nWhat would you like to do? ");
+        Console.WriteLine("MyJournal Menu \n\n1. Write \n2. Display \n3. Save \n4. Load \n5. Add a personalized prompt \n6. Quit \n\nWhat would you like to do? ");
 
         //Get input from user
         string menuChoiceString = Console.ReadLine();
@@ -105,7 +106,7 @@ Program ends when user selects Quit command 5
         // to show up and run for the user as long as they
         // have not input 5 (ie: quit)
 
-        while (menuChoice != 5)
+        while (menuChoice != 6)
         {
             // use if else statements to run through the program
             // based off of the user's menu choice input
@@ -161,9 +162,23 @@ Program ends when user selects Quit command 5
                 journal.LoadFromFile(fileName);
             }
 
+            else if (menuChoice == 5) // user selected PERSONALIZED PROMPT
+            {
+                PromptGenerator userInput = new PromptGenerator();
+
+                // get user to input their own personalized prompt
+                Console.Write("Enter your own personalized prompt to add to a list of randomized prompts you can receive. ");
+                string personalizedPrompt = Console.ReadLine();
+
+                userInput.AddToPrompts(personalizedPrompt);
+
+                // check to see if they all display
+                userInput.DisplayAllPrompts();
+            }
+
             // Now ask the user what they want to do again,
             // and get a new input value for menuChoice
-            Console.WriteLine("MyJournal Menu \n1. Write \n2. Display \n3. Save \n4. Load \n5. Quit \nWhat would you like to do? ");
+            Console.WriteLine("MyJournal Menu \n1. Write \n2. Display \n3. Save \n4. Load \n5. Add personalized prompt \n6. Quit \n\nWhat would you like to do? ");
 
             //Get input from user
             menuChoiceString = Console.ReadLine();
@@ -172,7 +187,7 @@ Program ends when user selects Quit command 5
         }
 
         // if statement for when the user inputs 5 (ie: quit)
-        if (menuChoice == 5)
+        if (menuChoice == 6)
         {
             Console.WriteLine("See you next time."); // now the program closes
         }
