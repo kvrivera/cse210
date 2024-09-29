@@ -49,26 +49,41 @@ Variables:
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            // ask the computer to read all of the lines of the file
-            string[] lines = System.IO.File.ReadAllLines(fileName);
-
-            foreach (string line in lines)
+            foreach (Entry entry in _entries)
             {
-                // select a separator character
-                // . makes sense here because it could be split by sentences,
-                // which makes the most sense to me right now
-                string[] parts = line.Split(".");
+                // this is the format:
+                // date | prompt | entry text
+                // make this a variable to write into the file when it saves
+                string lineToWrite = $"{entry._date}|{entry._promptText}|{entry._entryText}";
+                outputFile.WriteLine(lineToWrite);
             }
         }
 
-
-
-
-
+        // tell the user their file has been saved properly
+        Console.WriteLine("Your journal has been saved successfully!");
     }
 
     public void LoadFromFile(string file)
     {
-        // syntax to load entry from file
+        // convert user's given file name to a string variable we can use here
+        string fileName = file;
+
+        // ask the computer to read all of the lines of the file
+        string[] lines = System.IO.File.ReadAllLines(fileName);
+
+        foreach (string line in lines)
+        {
+            // select a separator character
+            // . makes sense here because it could be split by sentences,
+            // which makes the most sense to me right now
+            string[] parts = line.Split("|");
+
+            // print each part using a foreach loop
+            foreach (string part in parts)
+            {
+                Console.WriteLine(part);
+                /* Console.WriteLine(part.Trim()); // can use Trim() to remove extra white spaces */
+            }
+        }
     }
 }

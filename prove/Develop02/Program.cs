@@ -40,11 +40,7 @@ in your class or in the file. You can simply store it as a string.
 */
 
 /*
-Meeting the core requirements makes your program eligible to 
-receive a 93%. To receive 100% on the assignment, 
-you need to show creativity and exceed these requirements.
-
-Here are some ideas you might consider:
+Above and Beyond Ideas to consider:
 
 Think of other problems that keep people from writing in their 
 journal and address one of those.
@@ -75,6 +71,7 @@ using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Enumeration;
 
 class Program
 /* 
@@ -83,11 +80,13 @@ entries.
 Inputs: journal entries through the Write command
 Outputs: journal entries displayed through Display command
 
-Program ends when user selects Quit command
+Program ends when user selects Quit command 5
 */
 {
     static void Main(string[] args)
     {
+        Journal journal = new Journal();
+
         /* 
         Display the menu
         1. Write
@@ -102,19 +101,16 @@ Program ends when user selects Quit command
         string menuChoiceString = Console.ReadLine();
         // convert string to integer
         int menuChoice = int.Parse(menuChoiceString);
-
         // use a do while loop to ensure the menu continues
         // to show up and run for the user as long as they
         // have not input 5 (ie: quit)
+
         while (menuChoice != 5)
         {
             // use if else statements to run through the program
             // based off of the user's menu choice input
             if (menuChoice == 1) // user selected WRITE
             {
-                // initiate a new Journal
-                Journal journal = new Journal();
-
                 // initiate a new Entry
                 Entry entry = new Entry();
 
@@ -132,24 +128,15 @@ Program ends when user selects Quit command
 
                 // add entry to journal's _entries list
                 journal.AddEntry(entry);
+            }
 
-                /*
+            else if (menuChoice == 2) // user selected DISPLAY
+            {
                 // use a foreach loop to display all entries
                 foreach (Entry e in journal._entries)
                 {
                     e.Display(); // display the whole entry
                 }
-                */
-            }
-
-            else if (menuChoice == 2) // user selected DISPLAY
-            {
-                // find out what file the user wants to display entries from
-                // open the file
-                // use a foreach loop to display all entries
-
-
-                foreach (Entry e in )
             }
 
             else if (menuChoice == 3) // user selected SAVE
@@ -159,13 +146,29 @@ Program ends when user selects Quit command
                 string file = Console.ReadLine();
 
                 // save the entry to the file
-
+                foreach (Entry entry in journal._entries)
+                {
+                    journal.SaveToFile(file); // the user's chosen file name is in the brackets, passed through the method
+                }
             }
 
             else if (menuChoice == 4) // user selected LOAD
             {
-                //
+                Console.Write("What is the name of the file you would like to load? ");
+                // get the file name from the user
+                string fileName = Console.ReadLine();
+                // open the file with the name that the user gave
+                journal.LoadFromFile(fileName);
             }
+
+            // Now ask the user what they want to do again,
+            // and get a new input value for menuChoice
+            Console.WriteLine("MyJournal Menu \n1. Write \n2. Display \n3. Save \n4. Load \n5. Quit \nWhat would you like to do? ");
+
+            //Get input from user
+            menuChoiceString = Console.ReadLine();
+            // convert string to integer
+            menuChoice = int.Parse(menuChoiceString);
         }
 
         // if statement for when the user inputs 5 (ie: quit)

@@ -70,6 +70,5 @@ class Program
 
         // Display the resume on the screen
         resume1.Display();
-
     }
 }
