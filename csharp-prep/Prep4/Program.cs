@@ -53,18 +53,28 @@ class Program
         int userNumber = 99999;
 
         // Introduce program to user, giving instructions for user
-        Console.Write("Enter a series of numbers, one at a time.");
+        Console.Write("Enter a series of numbers, one at a time. ");
         Console.WriteLine("Type 0 when finished.");
 
         // use a do while loop to allow the user to enter in a
         // series of numbers, stopping when they enter 0
         while (userNumber != 0)
         {
-            Console.Write("Enter number: ");
+            Console.Write("Enter a number: ");
             userNumber = int.Parse(Console.ReadLine());
-            // add the user's given number to the list
-            numbers.Add(userNumber);
+
+            if (userNumber != 0)
+            {
+                // add the user's given number to the list
+                numbers.Add(userNumber);
+            }
+            else if (userNumber == 0)
+            {
+                Console.WriteLine("All numbers received. Calculating ...");
+            }
+
         }
+
 
         // when the user enters 0 the following code will be executed
 
