@@ -1,5 +1,0 @@
-/*
-GetTop : class
-Purpose:
-    
-*/
