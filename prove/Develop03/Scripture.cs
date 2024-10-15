@@ -41,8 +41,8 @@ class Scripture
         // add each word to the _words list
         foreach (string word in words)
         {
-            Word _text = new Word(word);
-            _words.Add(_text);
+            Word individualWord = new Word(word); // create an instance of a new Word referenced by the variable 'text'
+            _words.Add(individualWord); // add the new Word to the _words list
         }
     }
     // METHODS (ie: behaviours)
@@ -59,20 +59,25 @@ class Scripture
             // use Count to help Next run properly
             int index = random.Next(_words.Count); // use Count method to get count of how many objects are in the list
 
-            // check if the word is already hidden
-            if (!_words[index].IsHidden())
-            {
-                _words[index].HideWord();
-                numberHidden++; // add 1 to the numberHidden count, so the loop stops at 3 hidden words
-            }
+            foreach (Word word in _words)
+                // check if the word is already hidden
+                if (!_words[index].IsHidden())
+                {
+                    _words[index].HideWord();
+                    numberHidden++; // add 1 to the numberHidden count, so the loop stops at 3 hidden words
+                }
         }
-
-
     }
-    string GetScriptureDisplayText() // display text refers to text with some words shown, some hidden
+    public string GetScriptureDisplayText()
     {
-        // syntax
-        return "";
+        // create a string variable for the reference display text
+        string referenceDisplayText = _reference.GetReferenceDisplayText();
+
+        // print the list of Word objects from the _words list
+
+        // but only the Word objects, nothing else
+        string scriptureDisplayText = $"{referenceDisplayText} \n{_words}";
+        return scriptureDisplayText;
     }
     bool CheckIfCompletelyHidden() // check to see if all of the words are hidden, and if so, quit the program
     {

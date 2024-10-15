@@ -35,12 +35,20 @@ class Word
     public bool IsHidden() // check to see if a word is hidden or not
     {
         if (_text == "___")
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
     }
-    string GetWordDisplayText() // return the display text of a word, whether it is the word with letters or the hidden ____ version
+    public string GetWordDisplayText() // return the display text of a word, whether it is the word with letters or the hidden ____ version
     {
+        if (IsHidden() == true)
+        {
+
+        }
         return _text;
     }
 }

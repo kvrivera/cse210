@@ -17,32 +17,32 @@ class Reference
     // 1 verse
     public Reference(string book, int chapter, int verse)
     {
-        GetReferenceDisplayText(book, chapter, verse);
-    }
-    // 2 verses
-    public Reference(string book, int chapter, int verse, int endVerse)
-    {
-        GetReferenceDisplayText(book, chapter, verse, endVerse);
-    }
-    // METHODS (ie: behaviours)
-    // use method overloading to show what happens with different amounts of parameters passed
-    private string GetReferenceDisplayText(string book, int chapter, int verse) // returns a string of "book chapter:verse"
-    {
         _book = book;
         _chapter = chapter;
         _verse = verse;
-        string referenceDisplayText = $"{_book} {_chapter}:{_verse}";
-        return referenceDisplayText;
+        _endVerse = 0;
     }
-    public string GetReferenceDisplayText(string book, int chapter, int verse, int endVerse) // returns a string of "book chapter:verse-endVerse"
+    // 2 verses
+    public Reference(string book, int chapter, int verse, int endVerse)
     {
         _book = book;
         _chapter = chapter;
         _verse = verse;
         _endVerse = endVerse;
-        string referenceDisplayText = $"{_book} {_chapter}:{_verse}-{_endVerse}";
-        return referenceDisplayText;
     }
+    // METHODS (ie: behaviours)
+    // use method overloading to show what happens with different amounts of parameters passed
 
-
+    // 1 verse
+    public string GetReferenceDisplayText()
+    {
+        if (_endVerse == 0) // 1 verse
+        {
+            return $"{_book} {_chapter}:{_verse}";
+        }
+        else // more than 1 verse
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        }
+    }
 }

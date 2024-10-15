@@ -26,11 +26,35 @@ Purpose:
 */
 
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop03 World!");
+        // clear the console
+        Console.Clear();
+
+        // get the reference
+        Reference reference1 = new Reference("John", 3, 16);
+
+        // get the scripture text and reference string
+        Scripture scripture = new Scripture(reference1, "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+        Console.WriteLine(scripture.GetScriptureDisplayText());
+
+
+        //////Scripture scriptureVariable = new Scripture("John 3:16", "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+        // show the user the reference and scripture text
+        ////Console.WriteLine($'{variable}');
+
+        // prompt user to press enter key or type quit
+        Console.Write("To begin, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
+        Console.ReadLine(); // accept input from user
+
+        // if the user presses quit, the program should end
+        // if the user presses enter, the program should begin
+        Console.WriteLine();
+        // when all of the words in the scripture are hidden, the program should end
+        Console.WriteLine();
     }
 }
