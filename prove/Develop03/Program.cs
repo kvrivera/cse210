@@ -56,16 +56,25 @@ class Program
         {
             if (userInput == "") // pressed "Enter" key (ie: returned an empty string)
             {
-                if scripture.
-                // syntax for slowly hiding words
-                scripture.HideRandomWords(3);
-                // get new display text for Scripture object
-                string newDisplayText = scripture.GetScriptureDisplayText();
-                // print to console
-                Console.WriteLine(newDisplayText);
+                bool scriptureIsHidden = scripture.CheckIfCompletelyHidden();
+                if (scriptureIsHidden == true) // if all words are hidden 
+                {
+                    Console.WriteLine("Great job! All done. Ending program...");
+                    break; // end the program now
+                }
 
-                Console.Write("To continue, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
-                userInput = Console.ReadLine(); // accept input from user
+                else if (scriptureIsHidden == false)  // if not all words are hidden
+                {
+                    scripture.HideRandomWords(3); // syntax for slowly hiding words
+                    // get new display text for Scripture object
+                    string newDisplayText = scripture.GetScriptureDisplayText();
+                    // print to console
+                    Console.WriteLine(newDisplayText);
+
+                    Console.Write("To continue, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
+                    userInput = Console.ReadLine(); // accept input from user
+                }
+
             }
             else if (userInput == "quit")
             {

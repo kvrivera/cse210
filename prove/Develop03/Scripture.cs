@@ -56,11 +56,15 @@ class Scripture
         foreach (Word word in _words)
         {
             // if the word is visible, add it to the list of visible words
-            if (!_words[index].IsHidden())
+            if (!word.IsHidden() == true)
             {
                 visibleWords.Add(word);
-                numberToHide++;
             }
+        }
+
+        if (visibleWords.Count < numberToHide) // if the number of words UNhidden is smaller than the number of words passed to hide (check parameters)...
+        {
+            numberToHide = visibleWords.Count; // then only hide as many words are left to hide
         }
 
         int numberHidden = 0;
@@ -69,16 +73,10 @@ class Scripture
         {
             // use Next method to get a random index
             // use Count to help Next run properly
-            int index = random.Next(_words.Count); // use Count method to get count of how many objects are in the list
+            int index = random.Next(visibleWords.Count); // use Count method to get count of how many objects are in the visible words list
+            visibleWords.RemoveAt(index); // this function will remove the word we just made not visible so that the program doesn't select it again
 
-
-            foreach (Word word in _words)
-                // check if the word is already hidden
-                if (!_words[index].IsHidden())
-                {
-                    _words[index].HideWord();
-                    numberHidden++; // add 1 to the numberHidden count, so the loop stops at 3 hidden words
-                }
+            numberHidden++; // add 1 to the numberHidden count, so the loop stops at the set number of hidden words
         }
     }
     public string GetScriptureDisplayText()
