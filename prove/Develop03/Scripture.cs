@@ -31,11 +31,10 @@ class Scripture
     public Scripture(Reference reference, string scriptureText)
     {
         _reference = reference;
+        _words = new List<Word>(); // initialize the list here
 
         // now turn the string scriptureText into separate Word objects
         // for each word and put them into a list
-
-        // split the scriptureText string into individual words
         string[] words = scriptureText.Split(" ");
 
         // add each word to the _words list
@@ -44,12 +43,25 @@ class Scripture
             Word individualWord = new Word(word); // create an instance of a new Word referenced by the variable 'text'
             _words.Add(individualWord); // add the new Word to the _words list
         }
+
     }
     // METHODS (ie: behaviours)
-    void HideRandomWords(int numberToHide) // randomly hide a number of words equal to numberToHide, that are not already hidden
+    public void HideRandomWords(int numberToHide) // randomly hide a number of words equal to numberToHide, that are not already hidden
     {
         // create an instance of Random
         Random random = new Random();
+        // create an instance of a List<Word> to show only viible words
+        List<Word> visibleWords = new List<Word>();
+
+        foreach (Word word in _words)
+        {
+            // if the word is visible, add it to the list of visible words
+            if (!_words[index].IsHidden())
+            {
+                visibleWords.Add(word);
+                numberToHide++;
+            }
+        }
 
         int numberHidden = 0;
 
@@ -58,6 +70,7 @@ class Scripture
             // use Next method to get a random index
             // use Count to help Next run properly
             int index = random.Next(_words.Count); // use Count method to get count of how many objects are in the list
+
 
             foreach (Word word in _words)
                 // check if the word is already hidden
@@ -70,16 +83,20 @@ class Scripture
     }
     public string GetScriptureDisplayText()
     {
-        // create a string variable for the reference display text
         string referenceDisplayText = _reference.GetReferenceDisplayText();
+        // initialize a new string
+        string scriptureDisplayText = $"{referenceDisplayText} \n"; // just the reference for now
 
         // print the list of Word objects from the _words list
-
+        foreach (Word word in _words)
+        {
+            string wordDisplayText = word.GetWordDisplayText();
+            scriptureDisplayText += wordDisplayText + " "; // add each Word's text to the end of the string
+        }
         // but only the Word objects, nothing else
-        string scriptureDisplayText = $"{referenceDisplayText} \n{_words}";
         return scriptureDisplayText;
     }
-    bool CheckIfCompletelyHidden() // check to see if all of the words are hidden, and if so, quit the program
+    public bool CheckIfCompletelyHidden() // check to see if all of the words are hidden, and if so, quit the program
     {
         bool completelyHidden = true; // use a boolean value here so that no matter
                                       // what happens with the while or foreach loop,
@@ -93,6 +110,6 @@ class Scripture
             }
         return completelyHidden; // this returns the boolean value of true or false
                                  // as determined by the foreach loop and if statement
-                                 // True unless proven otherwise by the loop and if
+                                 // True unless proven otherwise by the loop
     }
 }

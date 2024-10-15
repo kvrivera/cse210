@@ -49,10 +49,46 @@ class Program
 
         // prompt user to press enter key or type quit
         Console.Write("To begin, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
-        Console.ReadLine(); // accept input from user
+        string userInput = Console.ReadLine(); // accept input from user
 
+
+        while (userInput != "quit")
+        {
+            if (userInput == "") // pressed "Enter" key (ie: returned an empty string)
+            {
+                if scripture.
+                // syntax for slowly hiding words
+                scripture.HideRandomWords(3);
+                // get new display text for Scripture object
+                string newDisplayText = scripture.GetScriptureDisplayText();
+                // print to console
+                Console.WriteLine(newDisplayText);
+
+                Console.Write("To continue, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
+                userInput = Console.ReadLine(); // accept input from user
+            }
+            else if (userInput == "quit")
+            {
+                Console.WriteLine("Ending the program. Have a nice day!");
+                // end the program here
+                break;
+            }
+            else if (scripture.CheckIfCompletelyHidden()) // if all of the words are hidden
+            {
+                Console.WriteLine("Great work! Ending the program...");
+                // end program here
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please press Enter to continue or type \"quit\" to exit the program. ");
+                userInput = Console.ReadLine(); // accept new input from user
+            }
+        }
         // if the user presses quit, the program should end
         // if the user presses enter, the program should begin
+
+
         Console.WriteLine();
         // when all of the words in the scripture are hidden, the program should end
         Console.WriteLine();

@@ -30,7 +30,7 @@ class Word
     }
     void ShowWord()
     {
-        // syntax
+        //syntax
     }
     public bool IsHidden() // check to see if a word is hidden or not
     {
@@ -47,8 +47,11 @@ class Word
     {
         if (IsHidden() == true)
         {
-
+            return "___";
         }
-        return _text;
+        else
+        {
+            return _text;
+        }
     }
 }
