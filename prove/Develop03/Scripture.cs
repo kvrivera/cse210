@@ -1,3 +1,12 @@
+///***
+/// ABOVE AND BEYOND
+/// I created an additional option in the program to take user input
+/// in order to store a Reference and then a Scripture that the user
+/// gives themselves. The user has a choice at the beginning of the
+/// program to choose a predetermined scripture (basic requirements of
+/// the assignment) or to input their own scripture.
+///***
+
 /*
 Scripture Class
 Purpose:
@@ -74,7 +83,12 @@ class Scripture
             // use Next method to get a random index
             // use Count to help Next run properly
             int index = random.Next(visibleWords.Count); // use Count method to get count of how many objects are in the visible words list
-            visibleWords.RemoveAt(index); // this function will remove the word we just made not visible so that the program doesn't select it again
+            Word wordToHide = visibleWords[index]; // this is an instance of Word that is currently in the visibleWords list
+            wordToHide.HideWord(); // now hide this instance of Word in the original list (that's what this method/function does)
+
+            visibleWords.RemoveAt(index); // this function will remove the word we just made not visible 
+            // from the visibleWords list
+            // so that the program doesn't select it again
 
             numberHidden++; // add 1 to the numberHidden count, so the loop stops at the set number of hidden words
         }

@@ -32,20 +32,72 @@ class Program
 {
     static void Main(string[] args)
     {
+        // declare variables so that they work outside of if statements
+        Scripture scripture = null;
+
         // clear the console
         Console.Clear();
 
-        // get the reference
-        Reference reference1 = new Reference("John", 3, 16);
+        // give the user the following 2 options:
+        // either they use a pre-loaded Scripture or they input their own scripture and reference
 
-        // get the scripture text and reference string
-        Scripture scripture = new Scripture(reference1, "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
-        Console.WriteLine(scripture.GetScriptureDisplayText());
+        Console.WriteLine("Welcome to The Scripture Memorizer. Would you like to memorize \n a preloaded scripture, or create your own?");
+        Console.Write("Type 1 for preloaded, or 2 for creating your own. ");
+        string userChoice = Console.ReadLine();
 
+        if (userChoice == "1")
+        {
+            // get the reference
+            Reference reference1 = new Reference("John", 3, 16);
 
-        //////Scripture scriptureVariable = new Scripture("John 3:16", "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
-        // show the user the reference and scripture text
-        ////Console.WriteLine($'{variable}');
+            // get the scripture text and reference string
+            scripture = new Scripture(reference1, "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
+            Console.WriteLine(scripture.GetScriptureDisplayText());
+        }
+
+        else if (userChoice == "2")
+        {
+            // get reference for scripture passage from user
+            // create variables to pass through the Reference object instance later
+            Console.WriteLine("First we will get the reference for your scripture passage.");
+            Console.Write("Enter the BOOK: ");
+            string userBook = Console.ReadLine();
+
+            Console.Write("Enter the CHAPTER: ");
+            string userChapterString = Console.ReadLine();
+            int userChapter = int.Parse(userChapterString); // parse to int
+
+            Console.Write("Enter the FIRST VERSE in the passage.");
+            string userFirstVerseString = Console.ReadLine();
+            int userFirstVerse = int.Parse(userFirstVerseString); // parse to int
+
+            Console.Write("Enter the LAST VERSE in the passage. If there is only 1 verse, type 0: ");
+            string userLastVerseString = Console.ReadLine();
+            int userLastVerse = int.Parse(userLastVerseString); // parse to int
+
+            // get the Scripture object text from user
+            Console.WriteLine("Now we will get the passage. Please type only words,");
+            Console.WriteLine("and do not include verse numbers. Press your ENTER button to submit.");
+            Console.Write("The PASSAGE: ");
+            string userScripturePassage = Console.ReadLine();
+
+            // create the Reference object
+            if (userLastVerse != 0) // > 1 verses
+            {
+                Reference reference1 = new Reference(userBook, userChapter, userFirstVerse, userLastVerse);
+
+                // create the Scripture object using the Reference object and the user's
+                // scripture passage input (userScripturePassage)
+                scripture = new Scripture(reference1, userScripturePassage);
+                Console.WriteLine(scripture.GetScriptureDisplayText());
+            }
+            else if (userLastVerse == 0) // == 1 verse
+            {
+                Reference reference1 = new Reference(userBook, userChapter, userFirstVerse);
+                scripture = new Scripture(reference1, userScripturePassage);
+                Console.WriteLine(scripture.GetScriptureDisplayText());
+            }
+        }
 
         // prompt user to press enter key or type quit
         Console.Write("To begin, press the 'ENTER' key. \nTo quit the program, type 'quit' at any time.");
