@@ -30,7 +30,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Clear(); // clear the console
+        // Console.Clear(); // clear the console
 
         Console.WriteLine("Your videos:");
 
