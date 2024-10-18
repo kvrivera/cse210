@@ -25,6 +25,7 @@ class Video
         _title = title;
         _author = author;
         _length = length;
+        _comments = new List<Comment>();
     }
 
 
@@ -56,6 +57,6 @@ class Video
 
     public string FullVideoData()
     {
-        return $"\"{_title}\" by {_author} | {_length} seconds | Comments ({_totalNumberOfComments})";
+        return $"\"{_title}\" by {_author} | {_length} seconds | Comments ({NumberOfComments()})";
     }
 }

@@ -37,17 +37,17 @@ class Program
         ///// video1
         Video video1 = new Video("Coding 101", "Bob Seger", 543); // create a Video instance
         // comment1
-        Comment video1Comment1 = new Comment("Belly Blue", "This video is totally rad.");
+        Comment video1Comment1 = new Comment("Cynthia Marshall", "This changed my life. Thanks a lot.");
         video1.AddCommentToList(video1Comment1); // add comment to the list of comments for this video
         string v1C1Text = video1Comment1.GetCommentDisplayText();
 
         // comment2
-        Comment video1Comment2 = new Comment("Georgie Washingtonious", "I am subscribing to your channel IMMEDIATELY!");
+        Comment video1Comment2 = new Comment("Ashleigh Vanderdoes", "You're a genius. Can't wait for the next video!!");
         video1.AddCommentToList(video1Comment2); // add comment to list of video1 comments
         string v1C2Text = video1Comment2.GetCommentDisplayText();
 
         // comment3
-        Comment video1Comment3 = new Comment("Bobbie Brown", "Dude your videos help me learn so much. Thanks bruh.");
+        Comment video1Comment3 = new Comment("Hilly Gregson", "I'm exciting to learn more.");
         video1.AddCommentToList(video1Comment3); // add comment to list of comments for video1
         string v1C3Text = video1Comment3.GetCommentDisplayText();
 
@@ -55,6 +55,9 @@ class Program
         Console.WriteLine(fullVideoData1); // "Title" by Author | 00 seconds | Comments (#number)
         Console.WriteLine($"{v1C1Text} \n{v1C2Text} \n{v1C3Text}"); // print comments under video data
 
+        // white space
+        Console.WriteLine();
+        Console.WriteLine();
 
         ///// video2
         Video video2 = new Video("Coding In a Nutshell", "Billy Joel", 234); // create a Video instance
@@ -77,25 +80,34 @@ class Program
         Console.WriteLine(fullVideoData2); // "Title" by Author | 00 seconds | Comments (#number)
         Console.WriteLine($"{v2C1Text} \n{v2C2Text} \n{v2C3Text}"); // print comments under video data
 
+        // white space
+        Console.WriteLine();
+        Console.WriteLine();
+
+
         // video3
         Video video3 = new Video("Code My Life", "Matrix Guy", 0989); // create a Video instance
         // comment1
-        Comment video3Comment1 = new Comment("Belly Blue", "This video is totally rad.");
+        Comment video3Comment1 = new Comment("Fred Tappington", "Love it.");
         video3.AddCommentToList(video3Comment1); // add comment to the list of comments for this video
         string v3C1Text = video3Comment1.GetCommentDisplayText();
 
         // comment2
-        Comment video3Comment2 = new Comment("Georgie Washingtonious", "I am subscribing to your channel IMMEDIATELY!");
+        Comment video3Comment2 = new Comment("Victor Krum", "Better than Quidditch!");
         video3.AddCommentToList(video3Comment2); // add comment to list of video1 comments
         string v3C2Text = video3Comment2.GetCommentDisplayText();
 
         // comment3
-        Comment video3Comment3 = new Comment("Bobbie Brown", "Dude your videos help me learn so much. Thanks bruh.");
+        Comment video3Comment3 = new Comment("CodingNewb123", "WOWWWW <3 <3.");
         video3.AddCommentToList(video3Comment3); // add comment to list of comments for video1
         string v3C3Text = video3Comment3.GetCommentDisplayText();
 
         string fullVideoData3 = video3.FullVideoData();
         Console.WriteLine(fullVideoData3); // "Title" by Author | 00 seconds | Comments (#number)
         Console.WriteLine($"{v3C1Text} \n{v3C2Text} \n{v3C3Text}"); // print comments under video data
+
+        // white space
+        Console.WriteLine();
+        Console.WriteLine();
     }
 }
