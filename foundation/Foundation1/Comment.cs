@@ -9,8 +9,8 @@ using System;
 class Comment
 {
     // MEMBER VARIABLES
-    private string _commenter;
-    private string _commentText;
+    private string _commenter; // Name of person who made the comment
+    private string _commentText; // Comment text (what is says)
 
     // CONSTRUCTOR(S)
     public Comment(string commenter, string commentText)
@@ -20,12 +20,12 @@ class Comment
     }
 
     // MEMBER METHOD(S)
-    public string GetCommenterName() // return the value of the commenterName private member variable
+    private string GetCommenterName() // return the value of the commenterName private member variable
     {
         return _commenter;
     }
 
-    public string GetCommentText() // return the value of the commentText private member variable 
+    private string GetCommentText() // return the value of the commentText private member variable 
     {
         return _commentText;
     }
