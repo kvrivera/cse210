@@ -1,3 +1,12 @@
+///***
+/// ABOVE AND BEYOND
+/// I created an additional option in the program to take user input
+/// in order to store a Reference and then a Scripture that the user
+/// gives themselves. The user has a choice at the beginning of the
+/// program to choose a predetermined scripture (basic requirements of
+/// the assignment) or to input their own scripture.
+///***
+///
 /*
 Program Name: Scripture Memorizer
 Author: Kat Rivera
