@@ -3,11 +3,12 @@ class Product
     // Attributes / Variables
     private string _name;
     private string _productID;
-    private float _price;
+    private decimal _price;
     private int _quantity;
+    private decimal _totalProductCost;
 
     // Constructor(s)
-    public Product(string name, string productID, float price, int quantity)
+    public Product(string name, string productID, decimal price, int quantity)
     {
         _name = name;
         _productID = productID;
@@ -15,8 +16,9 @@ class Product
         _quantity = quantity;
     }
     // Methods
-    private float CalculateProductTotalCost(float _price, int _quantity)
+    private decimal CalculateProductTotalCost(decimal _price, int _quantity)
     {
-        return float;
+        decimal ProductTotalCost = _price * _quantity;
+        return ProductTotalCost;
     }
 }

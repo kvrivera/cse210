@@ -16,6 +16,10 @@ class Customer
     // Methods
     private bool DetermineIfAmerican(Address _address)
     {
+        if (/*address contains "USA" */) // fix syntax 
+        {
+
+        }
         bool CustomerIsAmerican = true;
         return true;
     }

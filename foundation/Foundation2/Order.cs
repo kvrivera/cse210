@@ -6,10 +6,16 @@ class Order
     private Customer _customer;
     private List<Product> _products;
 
-    // Methods
-    private float CalculateTotalCost()
+    // Constructor(s)
+    public Order(Customer customer, List<Product> products)
     {
-        return float;
+        _customer = customer;
+        _products = new List<Product>(products); // initialize the list
+    }
+    // Methods
+    private decimal CalculateTotalCost()
+    {
+        return decimal;
     }
 
     private string CreatePackingLabel(List<Product> _products)
