@@ -15,7 +15,7 @@ class Address
         _country = country;
     }
     // Methods
-    private bool DetermineIfUSA()
+    public bool DetermineIfUSA()
     {
         bool AddressIsUSA = true;
         if (_country == "USA")
@@ -30,7 +30,7 @@ class Address
         }
         return AddressIsUSA;
     }
-    private string CreateAddress(string _street, string _city, string _state, string _country)
+    public string CreateAddress(string _street, string _city, string _state, string _country)
     {
         string AddressString = $"{_street}\n{_city}, {_state}\n{_country}";
         return AddressString;

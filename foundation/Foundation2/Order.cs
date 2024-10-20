@@ -13,18 +13,42 @@ class Order
         _products = new List<Product>(products); // initialize the list
     }
     // Methods
-    private decimal CalculateTotalCost()
+    public decimal DetermineShippingCost()
+    {
+        bool isAmerican = _customer.DetermineIfAmerican();
+        decimal shippingCost = 0.00m;
+
+        if (isAmerican == true)
+        {
+            shippingCost = 5.00m;
+        }
+        else if (isAmerican == false)
+        {
+            shippingCost = 35.00m;
+        }
+        return shippingCost;
+
+    }
+    public decimal CalculateTotalCost()
     {
         return decimal;
     }
 
     private string CreatePackingLabel(List<Product> _products)
     {
+        foreach ()
+        {
+
+        } // forEach loop to return the name and product ID of each product as a string
         return "";
     }
 
-    private string CreateShippingLabel(Customer _customer)
+    public string CreateShippingLabel(Customer _customer)
     {
-        return "";
+        string customerName = _customer.ShowCustomerName();
+        string customerAddress = _customer.ShowCustomerAddress();
+
+        string shippingLabelString = $"{customerName}\n{customerAddress}";
+        return shippingLabelString;
     }
 }

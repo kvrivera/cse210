@@ -14,13 +14,18 @@ class Customer
     }
 
     // Methods
-    private bool DetermineIfAmerican(Address _address)
+    public bool DetermineIfAmerican()
     {
-        if (/*address contains "USA" */) // fix syntax 
-        {
-
-        }
-        bool CustomerIsAmerican = true;
-        return true;
+        bool customerIsAmerican = _address.DetermineIfUSA();
+        return customerIsAmerican;
+    }
+    public string ShowCustomerName() // need this for Order Shipping Label
+    {
+        return _name;
+    }
+    public string ShowCustomerAddress()
+    {
+        string addressString = _address.CreateAddress();
+        return addressString;
     }
 }

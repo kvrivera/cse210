@@ -27,12 +27,13 @@ class Program
         productList1.Append(product2); // append to product list
 
         Order order1 = new Order(customer1, productList1); // order1 instance
-        // get packing label
-        // print packing label
-        // get shipping label
-        // print shipping label
-        // get total price of order
-        // print total price of order
+                                                           // get packing label
+                                                           // print packing label
+        string customer1ShippingLabel = order1.CreateShippingLabel(customer1); // get shipping label
+        Console.WriteLine($"SHIPPING LABEL:\n{customer1ShippingLabel}");// print shipping label
+
+        decimal order1TotalOrderCost = order1.CalculateTotalCost(); // get total price of order
+        Console.WriteLine($"TOTAL COST: ${order1TotalOrderCost}"); // print total price of order
 
     }
 }
