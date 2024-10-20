@@ -6,13 +6,33 @@ class Address
     private string _state;
     private string _country;
 
+    // Constructors
+    public Address(string street, string city, string state, string country)
+    {
+        _street = street;
+        _city = city;
+        _state = state;
+        _country = country;
+    }
     // Methods
     private bool DetermineIfUSA()
     {
-        return true;
+        bool AddressIsUSA = true;
+        if (_country == "USA")
+        {
+            AddressIsUSA = true;
+            return AddressIsUSA;
+        }
+        else if (_country != "USA")
+        {
+            AddressIsUSA = false;
+            return AddressIsUSA;
+        }
+        return AddressIsUSA;
     }
-    private string CreateAddress(string _string, string _city, string _state, string _country)
+    private string CreateAddress(string _street, string _city, string _state, string _country)
     {
-        return "";
+        string AddressString = $"{_street}\n{_city}, {_state}\n{_country}";
+        return AddressString;
     }
 }

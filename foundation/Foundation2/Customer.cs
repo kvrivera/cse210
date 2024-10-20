@@ -6,9 +6,17 @@ class Customer
     private string _name;
     private Address _address;
 
-    // Methods
-    private bool DetermineIfAmerican()
+    // Constructor(s)
+    public Customer(string name, Address address)
     {
+        _name = name;
+        _address = address;
+    }
+
+    // Methods
+    private bool DetermineIfAmerican(Address _address)
+    {
+        bool CustomerIsAmerican = true;
         return true;
     }
 }
