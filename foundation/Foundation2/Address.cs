@@ -30,7 +30,7 @@ class Address
         }
         return AddressIsUSA;
     }
-    public string CreateAddress(string _street, string _city, string _state, string _country)
+    public string CreateAddress()
     {
         string AddressString = $"{_street}\n{_city}, {_state}\n{_country}";
         return AddressString;

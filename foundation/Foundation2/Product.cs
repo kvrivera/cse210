@@ -5,7 +5,6 @@ class Product
     private string _productID;
     private decimal _price;
     private int _quantity;
-    private decimal _totalProductCost;
 
     // Constructor(s)
     public Product(string name, string productID, decimal price, int quantity)
@@ -16,9 +15,17 @@ class Product
         _quantity = quantity;
     }
     // Methods
-    private decimal CalculateProductTotalCost(decimal _price, int _quantity)
+    public decimal CalculateProductTotalCost()
     {
         decimal ProductTotalCost = _price * _quantity;
         return ProductTotalCost;
+    }
+    public string ShowProductName() // need this for Packing Label (Order class)
+    {
+        return _name;
+    }
+    public string ShowProductID() // need this for Packing Label (Order class)
+    {
+        return _productID;
     }
 }

@@ -27,20 +27,33 @@ class Order
             shippingCost = 35.00m;
         }
         return shippingCost;
-
     }
     public decimal CalculateTotalCost()
     {
-        return decimal;
+        decimal shippingCost = DetermineShippingCost();
+        decimal orderTotalCost = shippingCost; // start with the shipping cost
+
+        foreach (Product product in _products)
+        {
+            decimal productTotalCost = product.CalculateProductTotalCost();
+            orderTotalCost += productTotalCost; // add the product's cost to the order's total cost
+        }
+
+        return orderTotalCost; // shipping cost + product costs
     }
 
-    private string CreatePackingLabel(List<Product> _products)
+    public string CreatePackingLabel()
     {
-        foreach ()
-        {
+        string packingLabelString = "";
 
-        } // forEach loop to return the name and product ID of each product as a string
-        return "";
+        foreach (Product product in _products)
+        {
+            string productName = product.ShowProductName();
+            string productID = product.ShowProductID();
+            string productString = $"{productName} ({productID})";
+            packingLabelString += productString + "\n";
+        }
+        return packingLabelString;
     }
 
     public string CreateShippingLabel(Customer _customer)
