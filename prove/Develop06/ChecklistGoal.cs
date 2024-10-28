@@ -50,9 +50,14 @@ public class ChecklistGoal : Goal
 
     public override string GetDetailsString()
     {
-
-        return $"[ ] {_shortName} ({_description}) -- Currently Completed: {_amountCompleted}/{_target}";
-
+        if (_isComplete == true)
+        {
+            return $"[X] {_shortName} ({_description}) -- Currently Completed: {_amountCompleted}/{_target}";
+        }
+        else
+        {
+            return $"[ ] {_shortName} ({_description}) -- Currently Completed: {_amountCompleted}/{_target}";
+        }
     }
 
     public override string GetStringRepresentation()

@@ -1,3 +1,9 @@
+// ABOVE AND BEYOND:
+// I added animations ("spinner") and confirmation messages in the GoalManager class to demonstrate to the user
+// that their Goal had been created, or that their saved file was loading.
+// I also added a level system, where the user can scale up to 11 levels based off of how many points they have. Once
+// the user reaches 1000 points, they have reached level 11! The ultimate level.
+// The user's level displays each time the menu shows (in the Start() method of the GoalManager class)
 using System;
 
 class Program

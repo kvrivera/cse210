@@ -4,6 +4,8 @@ public class GoalManager
     private List<Goal> _goals;
     private int _score;
 
+    private int _level;
+
     private List<string> _animationStrings;
 
     // Constructor(s)
@@ -11,8 +13,68 @@ public class GoalManager
     {
         _goals = new List<Goal>();
         _score = 0;
+        _level = 1;
         _animationStrings = new List<string> { "|", "/", "-", "\\" };
 
+    }
+    private int SetPlayerLevel()
+    {
+        if (_score <= 25)
+        {
+            _level = 1;
+            return _level;
+        }
+        else if (_score > 25 && _score <= 50)
+        {
+            _level = 2;
+            return _level;
+        }
+        else if (_score > 50 && _score <= 75)
+        {
+            _level = 3;
+            return _level;
+        }
+        else if (_score > 75 && _score <= 100)
+        {
+            _level = 4;
+            return _level;
+        }
+        else if (_score > 100 && _score <= 150)
+        {
+            _level = 5;
+            return _level;
+        }
+        else if (_score > 150 && _score <= 250)
+        {
+            _level = 6;
+            return _level;
+        }
+        else if (_score > 250 && _score <= 500)
+        {
+            _level = 7;
+            return _level;
+        }
+        else if (_score > 500 && _score <= 700)
+        {
+            _level = 8;
+            return _level;
+        }
+        else if (_score > 700 && _score <= 800)
+        {
+            _level = 9;
+            return _level;
+        }
+        else if (_score > 800 && _score < 1000)
+        {
+            _level = 10;
+            return _level;
+        }
+        else if (_score >= 1000)
+        {
+            _level = 11;
+            return _level;
+        }
+        return _level;
     }
 
     public void ShowSpinner(int seconds)
@@ -37,7 +99,7 @@ public class GoalManager
     public void Start() // show score, then menu
     {
         Console.WriteLine();
-        Console.WriteLine($"Your score is: {_score}");
+        DisplayPlayerInfo(); // shows score and level
         Console.WriteLine();
 
         Console.WriteLine("Menu Options:");
@@ -48,6 +110,8 @@ public class GoalManager
     public void DisplayPlayerInfo()
     {
         Console.WriteLine($"Total Score: {_score}");
+        _level = SetPlayerLevel();
+        Console.WriteLine($"Level: {_level}/11");
     }
     public int GrabPlayerScore()
     {
@@ -67,7 +131,7 @@ public class GoalManager
         }
     }
 
-    private void ListGoalDetails(List<Goal> listOfGoals)
+    public void ListGoalDetails(List<Goal> listOfGoals)
     {
         // syntax
         int orderedNumber = 1;
@@ -152,12 +216,13 @@ public class GoalManager
         // syntax
         Console.WriteLine(); // blank space
         Console.WriteLine("Which goal have you worked on?");
-        ShowGoalList(); // show the goal list
+        ListGoalDetails(_goals); // show the goal list
         Console.WriteLine(); // blank space
         Console.Write("Type the number of the goal as it corresponds to the goal list: ");
         int goalToBeRecordedInt = int.Parse(Console.ReadLine());
+        int goalAtIndex = goalToBeRecordedInt - 1;
 
-        Goal goalToBeRecorded = _goals[goalToBeRecordedInt - 1]; // pinpoint the goal we are recording progress for
+        Goal goalToBeRecorded = _goals[goalAtIndex]; // pinpoint the goal we are recording progress for
 
         goalToBeRecorded.RecordEvent();
         // award points
@@ -259,6 +324,8 @@ public class GoalManager
                 loadedGoals.Add(eternalGoal); // Append to the loadedGoals List
             }
         }
+
+        _goals = loadedGoals;
 
         Console.WriteLine("Loading your saved goals...");
         ShowSpinner(2);
