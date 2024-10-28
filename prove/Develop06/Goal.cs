@@ -20,9 +20,14 @@ public abstract class Goal
 
     public virtual string GetDetailsString()
     {
-        // syntax
-        return "";
+        return $"Goal Name: {_shortName}\nDescription: {_description}\nCompleted: [ ]";
+        // how can i include the checkbox if i can't access _isComplete here?
     }
 
     public abstract string GetStringRepresentation();
+
+    public virtual string GetGoalName()
+    {
+        return _shortName;
+    }
 }
