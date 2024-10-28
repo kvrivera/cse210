@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
         GoalManager goalManager = new GoalManager();
         goalManager.Start(); // clears console, shows score, then menu options
         Console.WriteLine(); // blank space
@@ -17,6 +18,8 @@ class Program
             if (userMenuChoice == 1) // Create New Goal
             {
                 goalManager.CreateGoal(); // shows goal types, lets user choose a type, takes input to set variables for Goal object
+
+                Console.Clear();
                 goalManager.Start();
                 Console.WriteLine(); // blank space
 
@@ -30,6 +33,8 @@ class Program
             {
                 goalManager.ShowGoalList(); // prints a numbered list of goals with their descriptions
 
+                Console.WriteLine();
+                Console.WriteLine();
                 goalManager.Start();
                 Console.WriteLine(); // blank space
                 Console.Write("Select a choice from the menu: ");
@@ -40,6 +45,7 @@ class Program
             {
                 goalManager.SaveGoals();
 
+                Console.Clear();
                 goalManager.Start();
                 Console.WriteLine(); // blank space
                 Console.Write("Select a choice from the menu: ");
@@ -50,6 +56,8 @@ class Program
             {
                 goalManager.LoadGoals();
 
+                Console.WriteLine();
+                Console.WriteLine();
                 goalManager.Start();
                 Console.WriteLine(); // blank space
                 Console.Write("Select a choice from the menu: ");
@@ -60,6 +68,7 @@ class Program
             {
                 goalManager.RecordEvent(); // user selects the goal they've worked on
 
+                Console.Clear();
                 goalManager.Start();
                 Console.WriteLine(); // blank space
                 Console.Write("Select a choice from the menu: ");
@@ -70,6 +79,7 @@ class Program
         if (userMenuChoice == 6) // Quit
         {
             Console.WriteLine("Ending program...");
+            goalManager.ShowSpinner(2);
         }
 
 

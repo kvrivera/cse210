@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Numerics;
 
 public class ChecklistGoal : Goal
 {
@@ -22,16 +23,29 @@ public class ChecklistGoal : Goal
     {
 
         _amountCompleted += 1; // add 1 to the amount completed
+
         if (_amountCompleted == _target)
         {
-
+            _isComplete = IsComplete();
         }
 
     }
 
     public override bool IsComplete()
     {
-        return true;
+        _isComplete = false;
+
+        if (_amountCompleted == _target)
+        {
+            _isComplete = true;
+            return _isComplete;
+        }
+        else
+        {
+            _isComplete = false;
+            return _isComplete;
+        }
+
     }
 
     public override string GetDetailsString()
@@ -46,5 +60,10 @@ public class ChecklistGoal : Goal
         // what will be stored in the file
         return $"ChecklistGoal;{_shortName};{_description};{_points};{_bonus};{_target};{_amountCompleted}";
         // ChecklistGoal;goalName;goalDescription;goalPointsToAward;bonusPointsToAward;goalTarget;amountCompleted
+    }
+
+    public int GetBonusPointsValue()
+    {
+        return _bonus;
     }
 }

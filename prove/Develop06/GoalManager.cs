@@ -15,7 +15,7 @@ public class GoalManager
 
     }
 
-    protected void ShowSpinner(int seconds)
+    public void ShowSpinner(int seconds)
     {
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(seconds);
@@ -36,7 +36,6 @@ public class GoalManager
     // Method(s)
     public void Start() // show score, then menu
     {
-        Console.Clear();
         Console.WriteLine();
         Console.WriteLine($"Your score is: {_score}");
         Console.WriteLine();
@@ -46,10 +45,16 @@ public class GoalManager
 
     }
 
-    private void DisplayPlayerInfo()
+    public void DisplayPlayerInfo()
     {
-        // syntax
+        Console.WriteLine($"Total Score: {_score}");
     }
+    public int GrabPlayerScore()
+    {
+        return _score;
+    }
+
+
 
     public void ShowGoalList()
     {
@@ -152,22 +157,24 @@ public class GoalManager
         Console.Write("Type the number of the goal as it corresponds to the goal list: ");
         int goalToBeRecordedInt = int.Parse(Console.ReadLine());
 
-        Goal goalToBeRecorded = _goals[goalToBeRecordedInt - 1];
+        Goal goalToBeRecorded = _goals[goalToBeRecordedInt - 1]; // pinpoint the goal we are recording progress for
 
+        goalToBeRecorded.RecordEvent();
         // award points
         int goalPoints = goalToBeRecorded.ShowGoalPoints();
+
         Console.WriteLine($"Congratulations! You have been awarded {goalPoints} points!"); // how many points the user won for this accomplishment
-        _score += goalPoints;
+        _score += goalPoints; // add current points to total score
         Console.WriteLine($"You now have {_score} points. Keep up the amazing work! :)");
         Console.WriteLine(); // blank space
 
-        // check the box
-        if (goalToBeRecorded.IsComplete() == true)
+        if (goalToBeRecorded is ChecklistGoal checklistGoal) // if this goal is a CheckistGoal (called "casting")
         {
-            string checkedBox = "[X]";
-            string goalDetails = goalToBeRecorded.GetDetailsString();
-            string goalDetailsString = $"{checkedBox} + {goalDetails}";
-            Console.WriteLine(goalDetailsString);
+            if (checklistGoal.IsComplete() == true)
+            {
+                int bonusPoints = checklistGoal.GetBonusPointsValue();
+                _score += bonusPoints;
+            }
         }
 
     }
@@ -190,6 +197,12 @@ public class GoalManager
                 // EternalGoal;goalName;goalDescription;goalPointsToAward
             }
         }
+
+        Console.WriteLine($"Saving your goals to {fileNameSave}...");
+        ShowSpinner(3);
+        Console.WriteLine();
+        Console.WriteLine("Returning to main menu...");
+        ShowSpinner(3);
     }
     public void LoadGoals()
     {
@@ -245,15 +258,13 @@ public class GoalManager
                 EternalGoal eternalGoal = new EternalGoal(goalName, goalDescription, goalPoints);
                 loadedGoals.Add(eternalGoal); // Append to the loadedGoals List
             }
-
-            Console.WriteLine("Loading your saved goals...");
-            ShowSpinner(3);
-
-            Console.WriteLine(); // blank space
-            ListGoalDetails(loadedGoals);
-            Console.WriteLine();
-
-
         }
+
+        Console.WriteLine("Loading your saved goals...");
+        ShowSpinner(2);
+
+        Console.WriteLine(); // blank space
+        ListGoalDetails(loadedGoals); // shows list of goals on the screen
+        Console.WriteLine();
     }
 }

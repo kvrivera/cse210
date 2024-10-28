@@ -1,4 +1,5 @@
 0
-SimpleGoal;Simple Goal;A description of words;25;False
-ChecklistGoal;Checklist Goal;The description for a checklist goal;40;100;3;0
-EternalGoal;Eternal Goal;This describes an eternal goal;20
+SimpleGoal;Simple simple goal;this is my description;50;False;
+ChecklistGoal;this is a checklist goal;this is my description;40;300;3;0
+EternalGoal;eternal goal #2;this is my eternal descriptor;20
+SimpleGoal;simpley simpleton goaly;this is my simple goal;30;False;

@@ -36,4 +36,5 @@ public abstract class Goal
     {
         return _points;
     }
+
 }
