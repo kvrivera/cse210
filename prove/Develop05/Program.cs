@@ -37,8 +37,8 @@ class Program
         Console.WriteLine("Welcome to MyMindfulnessApp.");
         Console.WriteLine();
         Console.WriteLine("Please choose from one of the following activities to practice mindfulness.");
-        Console.WriteLine("1. Breathing Activity \n2. Reflecting Activity\n3.Listing Activity\n4.Quit program");
-        Console.WriteLine("Type the number of the activity you would like to participate in. ");
+        Console.WriteLine("1. Breathing Activity \n2. Reflecting Activity\n3. Listing Activity\n4. Quit program");
+        Console.WriteLine("Type the number of the activity you would like to participate in: ");
         int userMenuChoice = int.Parse(Console.ReadLine()); // User input (menu choice) stored as variable
 
         while (userMenuChoice != 4) // While the user does not select 4 (ie: quit)
@@ -49,28 +49,54 @@ class Program
                 // syntax
                 Breathing breathingActivity = new Breathing();
                 breathingActivity.Run();
+
+                // now reset the loop
+                Console.WriteLine("What would you like to do now?"); // Repeat the menu for the user to choose their next activity or quit
+                Console.WriteLine("1. Breathing Activity \n2. Reflection Activity\n3. Listing Activity\n4. Quit program");
+                Console.WriteLine("Type the number of the activity you would like to participate in. ");
+                userMenuChoice = int.Parse(Console.ReadLine()); // Get user input again to reset value for the while loop
             }
             else if (userMenuChoice == 2)
             {
                 // syntax
                 Reflecting reflectingActivity = new Reflecting();
                 reflectingActivity.Run();
+
+                // now reset the loop
+                Console.WriteLine("What would you like to do now?"); // Repeat the menu for the user to choose their next activity or quit
+                Console.WriteLine("1. Breathing Activity \n2. Reflection Activity\n3. Listing Activity\n4. Quit program");
+                Console.WriteLine("Type the number of the activity you would like to participate in. ");
+                userMenuChoice = int.Parse(Console.ReadLine()); // Get user input again to reset value for the while loop
             }
             else if (userMenuChoice == 3)
             {
                 // syntax
                 Listing listingActivity = new Listing();
                 listingActivity.Run();
-            }
-            else
-            {
-                break;
-            }
 
-            Console.WriteLine("What would you like to do now?"); // Repeat the menu for the user to choose their next activity or quit
-            Console.WriteLine("1. Breathing Activity \n2. Reflection Activity\n3.Listing Activity\n4.Quit program");
-            Console.WriteLine("Type the number of the activity you would like to participate in. ");
-            userMenuChoice = int.Parse(Console.ReadLine()); // Get user input again to reset value for the while loop
+                // now reset the loop
+                Console.WriteLine("What would you like to do now?"); // Repeat the menu for the user to choose their next activity or quit
+                Console.WriteLine("1. Breathing Activity \n2. Reflection Activity\n3. Listing Activity\n4. Quit program");
+                Console.WriteLine("Type the number of the activity you would like to participate in. ");
+                userMenuChoice = int.Parse(Console.ReadLine()); // Get user input again to reset value for the while loop
+
+            }
+            else // If the user types 4 or anything else
+            {
+                Console.WriteLine("Invalid input.");
+
+                // now reset the loop
+                Console.WriteLine("What would you like to do now?"); // Repeat the menu for the user to choose their next activity or quit
+                Console.WriteLine("1. Breathing Activity \n2. Reflection Activity\n3. Listing Activity\n4. Quit program");
+                Console.WriteLine("Type the number of the activity you would like to participate in. ");
+                userMenuChoice = int.Parse(Console.ReadLine()); // Get user input again to reset value for the while loop
+
+            }
+        }
+        if (userMenuChoice == 4)
+        {
+            Console.WriteLine("Ending program...");
+            Console.WriteLine("Have a wonderful day!");
         }
     }
 }

@@ -12,24 +12,32 @@ class Reflecting : Activity
     // Constructor(s)
     public Reflecting()
     {
-        List<string> _prompts = new List<string> { "Think of a time when you stood up for someone else.", "Think of a time when you did something really difficult.", "Think of a time when you helped someone in need.", "Think of a time when you did something truly selfless." };
-        List<string> _questions = new List<string> { "Why was this experience meaningful to you?", "Have you ever done anything like this before?", "How did you get started?", "How did you feel when you had finished this task?", "What made this time different than other times when you were successful?", "What is your favourite thing about this experience?", "What could you learn from this experience that applies to other situations?", "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?", "How do you feel this experience made the world a better place?" };
+        _name = "Reflecting Activity";
+        _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+        _prompts = new List<string> { "Think of a time when you stood up for someone else.", "Think of a time when you did something really difficult.", "Think of a time when you helped someone in need.", "Think of a time when you did something truly selfless." };
+        _questions = new List<string> { "Why was this experience meaningful to you?", "Have you ever done anything like this before?", "How did you get started?", "How did you feel when you had finished this task?", "What made this time different than other times when you were successful?", "What is your favourite thing about this experience?", "What could you learn from this experience that applies to other situations?", "What did you learn about yourself through this experience?", "How can you keep this experience in mind in the future?", "How do you feel this experience made the world a better place?" };
     }
 
     // Methods (functions)
     public void Run()
     {
-        base.DisplayStartingMessage();
+        DisplayStartingMessage();
         DisplayPrompt(); // Get and display random prompt
 
-        while (timeRemaining > 0) // timeRemaining is whats left of _duration... // syntax required here
+        DateTime startTime = DateTime.Now; // time when starting
+        DateTime futureTime = startTime.AddSeconds(_duration); // what time it will be when the duration has passed
+        DateTime currentTime = DateTime.Now; // time right now
+
+        while (currentTime < futureTime)
         {
             DisplayQuestions(); // Get and display random question
-            // syntax to pause
-            // timeRemaining // update this at the end of each display
+            currentTime = DateTime.Now; // update currentTime for the loop's sake
         }
 
-        base.DisplayEndingMessage();
+        Console.WriteLine();
+        Console.WriteLine();
+        base.DisplayEndingMessage(); // end activity with ending message
+        Console.WriteLine();
     }
     private string GetRandomPrompt()
     {
@@ -50,5 +58,6 @@ class Reflecting : Activity
     {
         string randomQuestion = GetRandomQuestion();
         Console.WriteLine(randomQuestion);
+        ShowSpinner(5); // spinner animation
     }
 }
