@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 public class SimpleGoal : Goal
 {
     // Member Variable(s)
-    private bool _isComplete;
+    //    private bool _isComplete;
 
     // Constructor(s)
     public SimpleGoal(string name, string description, int points)
@@ -21,13 +21,14 @@ public class SimpleGoal : Goal
 
     public override bool IsComplete()
     {
-        // syntax
+        _isComplete = true;
         return _isComplete;
     }
 
     public override string GetStringRepresentation()
     {
-        // syntax
-        return "";
+        // what will be stored in the file
+        return $"SimpleGoal;{_shortName};{_description};{_points};{_isComplete};";
+        // simpleGoal;goalName;goalDescription;goalPoints;boolean value for complete
     }
 }

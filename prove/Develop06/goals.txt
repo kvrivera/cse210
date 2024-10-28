@@ -1,0 +1,4 @@
+0
+SimpleGoal;Simple Goal;A description of words;25;False
+ChecklistGoal;Checklist Goal;The description for a checklist goal;40;100;3;0
+EternalGoal;Eternal Goal;This describes an eternal goal;20

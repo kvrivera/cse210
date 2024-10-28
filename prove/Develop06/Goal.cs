@@ -5,6 +5,8 @@ public abstract class Goal
     protected string _description;
     protected int _points;
 
+    protected bool _isComplete;
+
     // Constructor(s)
     public Goal()
     {
@@ -20,8 +22,7 @@ public abstract class Goal
 
     public virtual string GetDetailsString()
     {
-        return $"Goal Name: {_shortName}\nDescription: {_description}\nCompleted: [ ]";
-        // how can i include the checkbox if i can't access _isComplete here?
+        return $"{_shortName} ({_description})";
     }
 
     public abstract string GetStringRepresentation();
@@ -29,5 +30,10 @@ public abstract class Goal
     public virtual string GetGoalName()
     {
         return _shortName;
+    }
+
+    public virtual int ShowGoalPoints()
+    {
+        return _points;
     }
 }

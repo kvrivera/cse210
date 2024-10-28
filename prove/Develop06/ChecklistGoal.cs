@@ -20,24 +20,31 @@ public class ChecklistGoal : Goal
     // Methods
     public override void RecordEvent()
     {
-        // syntax
+
+        _amountCompleted += 1; // add 1 to the amount completed
+        if (_amountCompleted == _target)
+        {
+
+        }
+
     }
 
     public override bool IsComplete()
     {
-        // syntax
-        throw new NotImplementedException();
+        return true;
     }
 
     public override string GetDetailsString()
     {
-        // syntax
-        return "";
+
+        return $"[ ] {_shortName} ({_description}) -- Currently Completed: {_amountCompleted}/{_target}";
+
     }
 
     public override string GetStringRepresentation()
     {
-        // syntax
-        return "";
+        // what will be stored in the file
+        return $"ChecklistGoal;{_shortName};{_description};{_points};{_bonus};{_target};{_amountCompleted}";
+        // ChecklistGoal;goalName;goalDescription;goalPointsToAward;bonusPointsToAward;goalTarget;amountCompleted
     }
 }
