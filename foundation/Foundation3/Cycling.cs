@@ -14,7 +14,7 @@ public class Cycling : Activity
     // Method(s)
     protected override double CalculateDistance()
     {
-        double distance = _speed * _activeMinutes;
+        double distance = (_speed / 60) * _activeMinutes; // calculate active minute to active hours
         return distance;
     }
 
@@ -24,6 +24,6 @@ public class Cycling : Activity
         double distance = CalculateDistance();
         double pace = CalculatePace();
 
-        return $"{dateString} Cycling ({_activeMinutes} min)- Distance {distance} km, Speed: {_speed} kph, Pace: {pace} min per km";
+        return $"{dateString} Cycling ({_activeMinutes} min)- Distance {distance:F1} km, Speed: {_speed:F1} kph, Pace: {pace:F1} min per km";
     }
 }

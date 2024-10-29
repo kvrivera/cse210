@@ -28,6 +28,6 @@ public class Running : Activity
         // calculate pace, save in a variable
         double pace = CalculatePace();
 
-        return $"{dateString} Running ({_activeMinutes} min)- Distance {_distance} km, Speed: {speed} kph, Pace: {pace} min per km";
+        return $"{dateString} Running ({_activeMinutes} min)- Distance {_distance:F1} km, Speed: {speed:F1} kph, Pace: {pace:F1} min per km";
     }
 }

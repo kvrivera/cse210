@@ -4,8 +4,9 @@ public class Swimming : Activity
     private int _numberOfLaps;
 
     //Constructor(s)
-    public Swimming(int numberOfLaps)
+    public Swimming(int activeMinutes, int numberOfLaps)
     {
+        _activeMinutes = activeMinutes;
         _numberOfLaps = numberOfLaps;
     }
 
@@ -21,7 +22,7 @@ public class Swimming : Activity
         double distance = CalculateDistance();
         double speed = CalculateSpeed();
         double pace = CalculatePace();
-        return $"{dateString} Swimming ({_activeMinutes} min)- Distance {distance} km, Speed: {speed} kph, Pace: {pace} min per km";
+        return $"{dateString} Swimming ({_activeMinutes} min)- Distance {distance:F1} km, Speed: {speed:F1} kph, Pace: {pace:F1} min per km";
     }
 
 }
